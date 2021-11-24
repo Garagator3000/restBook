@@ -5,7 +5,6 @@ import (
 	"github.com/Garagator3000/restBook/pkg/handler"
 	"github.com/Garagator3000/restBook/pkg/repository"
 	"github.com/Garagator3000/restBook/pkg/service"
-	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -17,9 +16,6 @@ func main() {
 
 	if err := initConfig(); err != nil {
 		logrus.Fatalf("error initializing config: %s", err.Error())
-	}
-	if err := godotenv.Load(); err != nil {
-		logrus.Fatalf("error loading env variables: %s", err.Error())
 	}
 
 	db, err := repository.NewPostgresDB(repository.Config{
